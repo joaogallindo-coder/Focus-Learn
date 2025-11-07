@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Focus Learn</title>
+  <link rel="icon" type="image/png" href="../img/icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    :root {
+      /* Cores Oficiais */
+      --color-primary: #3C315B;
+      --color-secondary: #3D4759;
+      --color-accent: #00E3B3;
+      --color-complement-1: #483B6D;
+      --color-complement-2: #7B64D9;
+      --color-background: #FDFCFE;
+      --color-page-bg: #F0F0F9;
+      
+      /* Cores de UI e Feedback */
+      --color-text-primary: var(--color-secondary);
+      --color-text-light: #f8f9fa;
+      --color-border: #d1d5db;
+      --color-border-focus: var(--color-complement-2);
+      --color-placeholder: #9ca3af;
+      --color-disabled: #e5e7eb;
+
+      /* Tipografia */
+      --font-family-main: 'Inter', sans-serif;
+      
+      /* Espaçamentos e Medidas */
+      --spacing-sm: 0.5rem;   /* 8px */
+      --spacing-md: 1rem;     /* 16px */
+      --spacing-lg: 1.5rem;   /* 24px */
+      --spacing-xl: 2rem;     /* 32px */
+      --spacing-xxl: 4rem;    /* 64px */
+      
+      --border-radius-md: 12px;
+      --border-radius-sm: 8px;
+      
+      /* Sombras */
+      --box-shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.1);
+      
+      /* Transições */
+      --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* NOVAS CORES (MANTIDAS DO CÓDIGO 2) */
+      --color-mint-bg: #BFEAD9;
+      --color-mint-stroke: #2DAA8C;
+      --color-peach-bg: #FFD8C6;
+      --color-peach-stroke: #E0663F;
+    }
+
+    /* ==========================================================================
+       2. ESTILOS GLOBAIS E RESET - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-main);
+      background-color: var(--color-page-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       3. LAYOUT PRINCIPAL - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+
+    /* ==========================================================================
+       4. COMPONENTES (CARD, ETC) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+
+    /* --- Card --- */
+    .login-card {
+      background-color: var(--color-background);
+      border-radius: var(--border-radius-md); /* Raio de borda padronizado */
+      box-shadow: var(--box-shadow-card);
+      padding: var(--spacing-lg);
+      height: 28rem;
+      width: 100%;
+      max-width: 960px; 
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-card__title {
+      font-size: clamp(1.75rem, 5vw, 2rem);
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       5. NOVOS ESTILOS (Específicos da Tela de Cadastro 3)
+       ========================================================================== */
+
+    .signup-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* Mobile */
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-lg);
+      gap: var(--spacing-sm);
+    }
+    
+    .signup-header__step {
+      color: var(--color-complement-2); /* Cor --step original */
+      font-size: 0.875rem; /* 14px */
+      font-weight: 700;
+    }
+
+    .signup-progress {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background-color: var(--color-border);
+      overflow: hidden;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .signup-progress__bar {
+      height: 100%;
+      background-color: var(--color-complement-2); /* Cor --accent original */
+      width: 0%; /* JS vai definir isso */
+      border-radius: 999px;
+      /* Transição MANTIDA do original */
+      transition: width 1.5s ease-out; 
+    }
+    
+    .signup-options {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* Mobile: empilhado */
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xl); /* Espaçamento padrão */
+      margin-top: var(--spacing-xl); /* Margem original ajustada */
+    }
+    
+    .signup-options__group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md); /* Espaçamento original (16px) */
+      font-size: 1.125rem; /* 18px */
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    
+    .signup-options__button {
+      width: 150px;
+      height: 150px;
+      border-radius: var(--border-radius-md); /* Borda original (12px) */
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      /* Transições MANTIDAS do original */
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      background: none; /* Reset do background do <button> */
+      padding: 0;
+    }
+    
+    .signup-options__button img {
+      width: 64px;
+      height: 64px;
+      display: block;
+    }
+    
+    /* Cores MANTIDAS usando as variáveis do CÓDIGO 2 */
+    .signup-options__button--green {
+      background-color: var(--color-mint-bg);
+      border-color: var(--color-mint-stroke);
+    }
+    
+    .signup-options__button--orange {
+      background-color: var(--color-peach-bg);
+      border-color: var(--color-peach-stroke);
+    }
+    
+    .signup-options__button:hover {
+      /* Efeitos MANTIDOS do original */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    }
+
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE (Ajustes da Base + Novos)
+       ========================================================================== */
+    
+    @media (min-width: 48em) { 
+      .login-card {
+        padding: var(--spacing-xl) 2.5rem;
+      }
+      
+      .signup-header {
+        flex-direction: row; /* Desktop: lado a lado */
+        align-items: center;
+      }
+      
+      .signup-options {
+        flex-direction: row;
+        gap: 8.125rem; 
+        margin-top: var(--spacing-xxl);
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main class="main-container">
+    
+    <section class="login-card">
+      
+      <header class="signup-header">
+        <h1 class="login-card__title">Você é...</h1>
+        <span class="signup-header__step">2 de 3 passos</span>
+      </header>
+
+      <div class="signup-progress">
+        <div class="signup-progress__bar"></div>
+      </div>
+
+      <div class="signup-options">
+        
+        <div class="signup-options__group">
+          <button id="opt-student" class="signup-options__button signup-options__button--green" type="button">
+            <img src="../img/estudante.png" alt="Estudante" />
+          </button>
+          <span>Estudante</span>
+        </div>
+
+        <div class="signup-options__group">
+          <button id="opt-teacher" class="signup-options__button signup-options__button--orange" type="button">
+            <img src="../img/professor.png" alt="Professor(a)" />
+          </button>
+          <span>Professor(a)</span>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBar = document.querySelector('.signup-progress__bar');
+      if (progressBar) {
+        setTimeout(() => {
+          progressBar.style.width = '66.66%';
+        }, 0);
+      }
+    });
+  </script>
+
+  <script>
+    document.getElementById('opt-student').onclick = () => location.href = 'cadastroEstudante.html';
+    document.getElementById('opt-teacher').onclick = () => location.href = 'cadastroProfessor.html';
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Focus Learn</title>
+  <link rel="icon" type="image/png" href="/../img/icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS)
+       ========================================================================== */
+    :root {
+      /* Cores Oficiais */
+      --color-primary: #3C315B;
+      --color-secondary: #3D4759;
+      --color-accent: #00E3B3;
+      --color-complement-1: #483B6D;
+      --color-complement-2: #7B64D9;
+      --color-background: #FDFCFE;
+      --color-page-bg: #F0F0F9;
+      
+      /* Cores de UI e Feedback */
+      --color-text-primary: var(--color-secondary); /* #3D4759 */
+      --color-text-light: #f8f9fa;
+      --color-border: #d1d5db;
+      --color-border-focus: var(--color-complement-2);
+      --color-placeholder: #9ca3af;
+      --color-disabled: #e5e7eb;
+
+      /* Cores MANTIDAS DO CÓDIGO 2 */
+      --color-option-border: #6D66A0;
+      --color-option-bg: #F8F5FF;
+
+      /* Tipografia */
+      --font-family-main: 'Inter', sans-serif;
+      
+      /* Espaçamentos e Medidas */
+      --spacing-sm: 0.5rem;   /* 8px */
+      --spacing-md: 1rem;     /* 16px */
+      --spacing-lg: 1.5rem;   /* 24px */
+      --spacing-xl: 2rem;     /* 32px */
+      
+      --border-radius-md: 12px;
+      --border-radius-sm: 8px;
+      --border-radius-xs: 4px;
+      
+      /* Sombras */
+      --box-shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.1);
+      
+      /* Transições */
+      --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================================
+       2. ESTILOS GLOBAIS E RESET
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-main);
+      background-color: var(--color-page-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       3. LAYOUT PRINCIPAL
+       ========================================================================== */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+
+    /* ==========================================================================
+       4. COMPONENTES (CARD, BOTÕES)
+       ========================================================================== */
+
+    .login-card {
+      background-color: var(--color-background);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--box-shadow-card);
+      padding: var(--spacing-lg);
+      width: 100%;
+      max-width: 1024px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-card__title {
+      font-size: clamp(1.5rem, 4vw, 1.875rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .form {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.875rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--border-radius-xs);
+      cursor: pointer;
+      transition: background-color var(--transition-default), transform var(--transition-default);
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background-color: var(--color-complement-1);
+      color: var(--color-text-light);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--color-primary);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ==========================================================================
+       5. ESTILOS DA TELA (OPÇÕES DE CHECKBOX)
+       ========================================================================== */
+    
+    .signup-header {
+      width: 100%;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .signup-options-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Mobile-first: 1 coluna */
+      gap: var(--spacing-md);
+      width: 100%;
+      margin: var(--spacing-xl) 0;
+    }
+    
+    /* --- Card de Opção (Radio Button) Otimizado --- */
+    .signup-option-card {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--color-option-border);
+      border-radius: var(--border-radius-xs);
+      background: var(--color-option-bg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1rem;
+      font-weight: 600;
+      /* [MUDANÇA] Cor do texto alterada para a primária */
+      color: var(--color-text-primary); 
+      padding: var(--spacing-lg);
+    }
+    
+    .signup-option-card span {
+      padding-left: calc(var(--spacing-md) + 20px); /* Espaço para a caixa */
+    }
+
+    .signup-option-card input[type="radio"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: absolute;
+      opacity: 0;
+    }
+    
+    /* A "caixa" falsa (::before) */
+    .signup-option-card span::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-option-border);
+      border-radius: var(--border-radius-xs);
+      background-color: transparent;
+      transition: background-color 0.2s, border-color 0.2s;
+      position: absolute;
+      left: var(--spacing-lg);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    /* [OTIMIZAÇÃO] O "check" falso (::after) refeito com 'border-width' */
+    .signup-option-card span::after {
+      content: '';
+      display: block;
+      width: 6px;   /* Largura do check */
+      height: 12px; /* Altura do check */
+      border: solid var(--color-background);
+      border-width: 0 3px 3px 0; /* Cria o 'V' */
+      
+      position: absolute;
+      left: calc(var(--spacing-lg) + 7px); /* Centraliza o check na caixa */
+      top: 50%;
+      
+      /* [OTIMIZAÇÃO] Animação de "surgir" */
+      transform: translateY(-60%) rotate(45deg) scale(0);
+      transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* --- Estados Interativos --- */
+    
+    .signup-option-card:hover {
+      border-color: var(--color-complement-2);
+      background-color: var(--color-background);
+    }
+    
+    .signup-option-card input[type="radio"]:focus-visible + span::before {
+       box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.3);
+    }
+    
+    .signup-option-card input[type="radio"]:checked + span::before {
+      background-color: var(--color-complement-2);
+      border-color: var(--color-primary);
+    }
+    
+    .signup-option-card input[type="radio"]:checked + span::after {
+      /* [OTIMIZAÇÃO] Mostra o check com a animação */
+      transform: translateY(-60%) rotate(45deg) scale(1);
+    }
+    
+    .signup-option-card input[typeD="radio"]:checked {
+       border-color: var(--color-primary);
+    }
+
+    .form__actions {
+      width: 100%;
+      display: flex;
+      /* [MUDANÇA] Alterado de 'center' para 'space-between' */
+      justify-content: space-between;
+      /* [MUDANÇA] Adicionado alinhamento vertical */
+      align-items: center;
+    }
+
+    /* [MUDANÇA] Regra '.form__link-back' MOVIDA de 'desktop' para 'mobile-first' (aplicar sempre) */
+    .form__link-back {
+      font-size: 1rem; /* 16px MANTIDO */
+      font-weight: 700;
+      color: var(--color-complement-2); /* Cor --step MANTIDA */
+      text-decoration: none;
+      text-align: left;
+      padding: var(--spacing-sm);
+    }
+
+    /* [MUDANÇA] Adicionada regra de hover (para consistência) */
+    .form__link-back:hover {
+      text-decoration: underline;
+    }
+
+    /* [MUDANÇA] Regra 'width: auto' MOVIDA de 'desktop' para 'mobile-first' */
+    .btn--responsive-action {
+      width: auto;
+    }
+
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE
+       ========================================================================== */
+    
+    @media (min-width: 48em) { /* 768px */
+      .login-card {
+        padding: var(--spacing-xl) 2.5rem;
+      }
+      
+      .signup-options-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+      }
+      
+      
+      .btn--responsive-action {
+        /* [MUDANÇA] 'width: auto' foi MOVIDO para fora da media query (acima) */
+        min-width: 239px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main class="main-container">
+    <section class="login-card">
+      <form class="form" action="#" onsubmit="return false;">
+      
+        <header class="signup-header">
+          <h1 class="login-card__title">Qual será seu tempo de estudo?</h1>
+        </header>
+        
+        <div class="signup-options-grid">
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="menos-30-minutos">
+            <span>Menos de 30 minutos/dia</span>
+          </label>
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="ate-3-horas">
+            <span>30 minutos/dia</span>
+          </label>
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="ate-1-hora">
+            <span>25 minutos/dia</span>
+          </label>
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="ate-4-horas">
+            <span>20 minutos/dia</span>
+          </label>
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="ate-2-horas">
+            <span>15 minutos/dia</span>
+          </label>
+          
+          <label class="signup-option-card">
+            <input type="radio" name="tempo" value="nao-sei">
+            <span>Ainda não tenho certeza</span>
+          </label>
+          
+        </div>
+
+        <div class="form__actions">
+          <a href="cadastroEstudante.html" class="form__link-back">Voltar</a>
+
+          <button href="../landingpage/index.html" type="submit" class="btn btn--primary btn--responsive-action">
+            <a href="../landingpage/index.html" style="color: inherit; text-decoration: none;">Complete o cadastro</a> 
+          </button>
+        </div>
+        
+      </form>
+    </section>
+  </main>
+</body>
+</html>

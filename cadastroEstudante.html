@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Focus Learn</title>
+  <link rel="icon" type="image/png" href="/../img/icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    :root {
+      /* Cores Oficiais */
+      --color-primary: #3C315B;
+      --color-secondary: #3D4759;
+      --color-accent: #00E3B3;
+      --color-complement-1: #483B6D;
+      --color-complement-2: #7B64D9;
+      --color-background: #FDFCFE;
+      --color-page-bg: #F0F0F9;
+      
+      /* Cores de UI e Feedback */
+      --color-text-primary: var(--color-secondary);
+      --color-text-light: #f8f9fa;
+      --color-border: #d1d5db;
+      --color-border-focus: var(--color-complement-2);
+      --color-placeholder: #9ca3af;
+      --color-disabled: #e5e7eb;
+
+      /* NOVAS CORES (MANTIDAS DO CÓDIGO 2) */
+      --color-input-custom-border: #6D66A0;
+      --color-input-custom-bg: rgba(226, 223, 254, 0.15);
+      --color-input-custom-placeholder: rgba(61, 71, 89, 0.45);
+
+      /* Tipografia */
+      --font-family-main: 'Inter', sans-serif;
+      
+      /* Espaçamentos e Medidas */
+      --spacing-sm: 0.5rem;   /* 8px */
+      --spacing-md: 1rem;     /* 16px */
+      --spacing-lg: 1.5rem;   /* 24px */
+      --spacing-xl: 2rem;     /* 32px */
+      
+      --border-radius-md: 12px;
+      --border-radius-sm: 8px;
+      
+      /* Sombras */
+      --box-shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.1);
+      
+      /* Transições */
+      --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================================
+       2. ESTILOS GLOBAIS E RESET - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-main);
+      background-color: var(--color-page-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       3. LAYOUT PRINCIPAL - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+
+    /* ==========================================================================
+       4. COMPONENTES (CARD, FORMULÁRIO, BOTÕES) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+
+    /* --- Card --- */
+    .login-card {
+      background-color: var(--color-background);
+      border-radius: var(--border-radius-md); /* Raio de borda original (25px) era muito grande, padronizado */
+      box-shadow: var(--box-shadow-card);
+      padding: var(--spacing-lg);
+      width: 100%;
+      max-width: 960px; /* max-width original (983px) ajustado */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-card__title {
+      font-size: clamp(1.75rem, 5vw, 2rem); /* 30px */
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* --- Formulário --- */
+    .form {
+      text-align: left;
+      width: 100%;
+    }
+
+    .form__group {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .form__label {
+      display: block;
+      font-size: 1.125rem; /* 18px MANTIDO */
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-text-primary);
+    }
+
+    .form__input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm); /* Raio de borda (4px) MANTIDO */
+      transition: border-color var(--transition-default), box-shadow var(--transition-default);
+    }
+
+    .form__input::placeholder {
+      color: var(--color-placeholder);
+    }
+    .form__input:focus, .form__input:focus-visible {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.2);
+    }
+
+    /* --- Botão --- */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.875rem 1rem;
+      font-size: 1rem; /* 14px MANTIDO */
+      font-family: inherit;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--border-radius-sm); /* Raio de borda (4px) MANTIDO */
+      cursor: pointer;
+      transition: background-color var(--transition-default), transform var(--transition-default), box-shadow var(--transition-default);
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background-color: var(--color-complement-1); /* Cor --button MANTIDA */
+      color: var(--color-text-light);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--color-primary); /* Cor :hover MANTIDA */
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(72, 59, 109, 0.4);
+    }
+
+
+    /* ==========================================================================
+       5. NOVOS ESTILOS (Específicos da Tela de Cadastro 3)
+       ========================================================================== */
+
+    .signup-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* Mobile */
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-lg);
+      gap: var(--spacing-sm);
+    }
+    
+    .signup-header__step {
+      color: var(--color-complement-2); /* Cor --step MANTIDA */
+      font-size: 0.875rem; /* 14px MANTIDO */
+      font-weight: 700;
+    }
+
+    .signup-progress {
+      width: 100%;
+      height: 10px;
+      border-radius: var(--border-radius-sm); /* Raio de borda (4px) MANTIDO */
+      background-color: var(--color-secondary); /* Cor --progress-bg MANTIDA */
+      overflow: hidden;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .signup-progress__bar {
+      height: 100%;
+      background-color: var(--color-complement-2); /* Cor --step MANTIDA */
+      width: 0%; /* JS vai definir isso */
+      border-radius: 999px;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Modificador para o estilo de input MANTIDO */
+    .form__input--custom-style {
+      border: 2.5px solid var(--color-input-custom-border);
+      background-color: var(--color-input-custom-bg);
+      padding: 1.25rem 1.5rem; /* Padding original (22px 28px) ajustado */
+      font-size: 1rem; /* 18px ajustado para 1rem */
+      font-weight: 700;
+    }
+    .form__input--custom-style::placeholder {
+      color: var(--color-input-custom-placeholder);
+      font-weight: 700;
+    }
+
+    /* Ações do formulário responsivas */
+    .form__actions {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse; /* Botão primeiro em mobile */
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+    
+    .form__link-back {
+      font-size: 1rem; /* 16px MANTIDO */
+      font-weight: 700;
+      color: var(--color-complement-2); /* Cor --step MANTIDA */
+      text-decoration: none;
+      text-align: center; /* Centraliza o "Voltar" em mobile */
+      padding: var(--spacing-sm);
+    }
+    .form__link-back:hover { 
+      text-decoration: underline;
+    }
+
+    .btn--responsive-action {
+      width: 100%; /* Ocupa 100% em mobile */
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE (Ajustes da Base + Novos)
+       ========================================================================== */
+    
+    @media (min-width: 48em) { /* 768px */
+      .login-card {
+        padding: var(--spacing-xl) 2.5rem;
+      }
+      
+      .signup-header {
+        flex-direction: row; /* Desktop: lado a lado */
+        align-items: center;
+      }
+
+      .form__actions {
+        flex-direction: row; /* Desktop: lado a lado */
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .form__link-back {
+          text-align: left; /* Alinha à esquerda em desktop */
+      }
+      
+      .btn--responsive-action {
+        width: auto; /* Tamanho automático em desktop */
+        min-width: 204px; /* Largura MANTIDA do original */
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main class="main-container">
+    
+    <section class="login-card">
+      
+      <header class="signup-header">
+        <h1 class="login-card__title">Quase lá!</h1>
+        <span class="signup-header__step">3 de 3 passos</span>
+      </header>
+
+      <div class="signup-progress">
+        <div class="signup-progress__bar"></div>
+      </div>
+
+      <form class="form" id="step3-form">
+        
+        <div class="form__group">
+          <label for="escola" class="form__label">Instituição de Ensino</label>
+          <input 
+            type="text" 
+            id="escola" 
+            name="escola" 
+            class="form__input form__input--custom-style" 
+            placeholder="Digite o nome da sua escola" 
+          />
+        </div>
+
+        <div class="form__group">
+          <label for="cursos" class="form__label">Para qual cursos devemos te direcionar?</label>
+          <input 
+            type="text" 
+            id="cursos" 
+            name="cursos" 
+            class="form__input form__input--custom-style" 
+            placeholder="Informe seu ano ou período semestral" 
+          />
+        </div>
+
+        <div class="form__actions">
+          <a href="cadastro3.html" class="form__link-back">Voltar</a>
+          
+          <button type="submit" class="btn btn--primary btn--responsive-action">Continuar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBar = document.querySelector('.signup-progress__bar');
+      if (progressBar) {
+        setTimeout(() => {
+          progressBar.style.width = '100%';
+        }, 0);
+      }
+    });
+  </script>
+
+  <script>
+    document.getElementById('step3-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      window.location.href = 'cadastroEstudante2.html';
+    });
+  </script>
+
+</body>
+</html>

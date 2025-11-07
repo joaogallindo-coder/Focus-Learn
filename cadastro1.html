@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Focus Learn</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+    <meta name="description" content="Implementação do fluxo de cadastro com HTML, CSS e JavaScript puros.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <style>
+        /* ==========================================================================
+   CSS - FLUXO DE CADASTRO (DUAS TELAS)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta de Cores Oficial */
+  --color-primary: #3C315B;
+  --color-secondary: #3D4759;
+  --color-accent: #00E3B3;
+  --color-complement-1: #483B6D;
+  --color-complement-2: #7B64D9;
+  --color-background: #FDFCFE;
+  --color-page-background: #F0F0F9;
+  
+  /* Cores de UI e Feedback */
+  --color-text-primary: var(--color-secondary);
+  --color-text-muted: #6c757d;
+  --color-border: #d1d5db;
+  --color-border-focus: var(--color-complement-2);
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+
+  /* Tipografia */
+  --font-family-main: 'Inter', sans-serif;
+  
+  /* Espaçamentos e Medidas */
+  --spacing-sm: 0.5rem;   
+  --spacing-md: 1rem;    
+  --spacing-lg: 1.5rem;   
+  --spacing-xl: 2.5rem;   
+  
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  
+  /* Sombras */
+  --box-shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  
+  /* Transições */
+  --transition-default: 200ms ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   2. ESTILOS GLOBAIS E RESET
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-page-background);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT PRINCIPAL E COMPONENTES REUTILIZÁVEIS
+   -------------------------------------------------------------------------- */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+.signup-card {
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-card);
+  padding: var(--spacing-lg);
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  overflow: hidden; /* Garante que as transições fiquem contidas */
+}
+
+.card__title {
+  font-size: 200px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.card__terms {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-md);
+}
+
+.card__divider {
+  border: 0;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: var(--spacing-lg) 0;
+}
+
+.card__login-prompt {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- Componentes --- */
+.form__group { margin-bottom: var(--spacing-lg);  }
+.form__label { display: block; text-align: left; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--spacing-sm); color: var(--color-primary); }
+.form__input { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; font-family: inherit; border: 1px solid var(--color-border); border-radius: var(--border-radius-sm); transition: border-color var(--transition-default), box-shadow var(--transition-default); }
+.form__input::placeholder { color: #9ca3af; }
+.form__input:focus { outline: none; border-color: var(--color-border-focus); box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.2); }
+.form__input.is-invalid { border-color: var(--color-error); }
+.form__input.is-invalid:focus { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); }
+.form__helper-text { font-size: 0.8rem; text-align: left; color: var(--color-text-muted); margin-top: var(--spacing-sm); }
+.form__error-text { font-size: 0.8rem; text-align: left; color: var(--color-error); font-weight: 500; margin-top: var(--spacing-sm); min-height: 1.2em; }
+
+.btn { display: inline-flex; justify-content: center; align-items: center; width: 100%; padding: 0.875rem 1rem; font-size: 1rem; font-family: inherit; font-weight: 600; border: none; border-radius: var(--border-radius-sm); cursor: pointer; position: relative; overflow: hidden; transition: background-color var(--transition-default), transform var(--transition-default); }
+.btn--primary { background-color: var(--color-complement-1); color: var(--color-background); }
+.btn--primary:hover { background-color: var(--color-primary); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.4); }
+.btn:active { transform: scale(0.98); }
+.btn:disabled { background-color: #9ca3af; cursor: not-allowed; }
+.btn.is-loading .btn__text { visibility: hidden; }
+.btn.is-loading .spinner { opacity: 1; }
+
+.spinner { position: absolute; width: 24px; height: 24px; border: 3px solid rgba(255, 255, 255, 0.3); border-top-color: var(--color-background); border-radius: 50%; animation: spin 1s linear infinite; opacity: 0; transition: opacity var(--transition-default); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+a { color: var(--color-complement-2); font-weight: 500; text-decoration: none; transition: color var(--transition-default); }
+a:hover { text-decoration: underline; color: var(--color-primary); }
+.link--highlight { color: var(--color-accent); font-weight: 600; }
+.link--highlight:hover { color: #00c49f; }
+
+/* --------------------------------------------------------------------------
+   4. GERENCIAMENTO DE TELAS (TRANSIÇÃO)
+   -------------------------------------------------------------------------- */
+.screen {
+  transition: opacity var(--transition-default), transform var(--transition-default);
+}
+.screen.is-hidden {
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none; /* Impede interação com a tela oculta */
+  position: absolute;
+  /* Posicionamento para garantir que a tela oculta não afete o layout */
+  top: 0; left: 0; right: 0; padding: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   5. ESTILOS ESPECÍFICOS DA TELA 2 (VERIFICAÇÃO)
+   -------------------------------------------------------------------------- */
+  
+   .card__title{
+  font-size: 200px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+   .verify-screen__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+.verify-screen__text strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.verify-screen__illustration {
+  margin: var(--spacing-sm) 0 var(--spacing-md);
+}
+.verify-screen__illustration img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+.verify-screen__note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.verify-screen__prompt--bottom {
+  margin-top: var(--spacing-lg);
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (min-width: 48em) {
+  .signup-card {
+    padding: var(--spacing-xl);
+  }
+  .card__title {
+    font-size: 2rem;
+  }
+}
+    </style>
+
+    <main class="main-container">
+        <div class="signup-card">
+            
+            <section id="signup-screen" class="screen is-active">
+                <h1 class="card__title">Cadastrar</h1>
+                
+                <form id="signup-form" class="form" novalidate>
+                    <div class="form__group">
+                        <label for="email" class="form__label">E-mail</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form__input" 
+                            placeholder="seu.email@gmail.com"
+                            required
+                            aria-required="true"
+                            aria-describedby="email-helper email-error"
+                        >
+                        <p id="email-helper" class="form__helper-text">Enviaremos um link mágico para você entrar instantaneamente.</p>
+                        <p id="email-error" class="form__error-text" role="alert" aria-live="assertive"></p>
+                    </div>
+
+                    <button id="submit-button" type="submit" class="btn btn--primary">
+                        <span class="btn__text">Enviar um link de e-mail único</span>
+                        <div class="spinner" role="status" aria-label="Enviando formulário"></div>
+                    </button>
+                </form>
+
+                <p class="card__terms">
+                    Ao se inscrever, você concorda com os <a href="#">Termos e Condições</a> da Seneca.
+                </p>
+
+                <hr class="card__divider">
+
+                <p class="card__login-prompt">
+                    Já tem uma conta? 
+                </p>
+                <p>
+                    <a href="../login/login.html" class="link--highlight">Faça login</a>
+                </p>
+            </section>
+            
+            <section id="verify-screen" class="screen is-hidden">
+                <h2 class="card__title">Verifique seu e-mail</h2>
+                <p class="verify-screen__text">
+                    Enviamos por e-mail um link único e seguro para <strong id="user-email-placeholder">seu.email@exemplo.com</strong>
+                </p>
+
+                <div class="verify-screen__illustration">
+                    <img src="../img/ilustration.png" alt="Ilustração de enviar e-mail.">
+                </div>
+
+                <p class="verify-screen__note">
+                    Não se esqueça de verificar sua caixa de spam e promoções.
+                </p>
+
+                <button onclick="location.href='cadastro2.html'" type="button" class="btn btn--primary">Reenviar o link</button>
+
+                <p class="card__login-prompt verify-screen__prompt--bottom">
+                    Está tendo problemas para acessar seu e-mail?
+                </p>
+                <p><a href="../login/login.html" class="link--highlight">Faça login de outra maneira</a></p>
+            </section>
+
+        </div>
+    </main>
+<script>
+/**
+ * =========================================================================
+ * SCRIPT DE INTERAÇÃO PARA FLUXO DE CADASTRO (DUAS TELAS)
+ *
+ * Objetivo: Gerenciar a validação da Tela 1 e a transição suave
+ * para a Tela 2, sem recarregar a página.
+ * =========================================================================
+ */
+(function () {
+  'use strict';
+
+  // --- Seletores do DOM ---
+  // Tela 1
+  const signupScreen = document.getElementById('signup-screen');
+  const form = document.getElementById('signup-form');
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('email-error');
+  const submitButton = document.getElementById('submit-button');
+
+  // Tela 2
+  const verifyScreen = document.getElementById('verify-screen');
+  const userEmailPlaceholder = document.getElementById('user-email-placeholder');
+
+  /**
+   * Valida se uma string é um endereço de e-mail válido.
+   * @param {string} email - O e-mail a ser validado.
+   * @returns {boolean} - Verdadeiro se o e-mail for válido.
+   */
+  const isValidEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  /**
+   * Exibe uma mensagem de erro para o campo de e-mail.
+   * @param {string} message - A mensagem de erro.
+   */
+  const displayError = (message) => {
+    emailInput.classList.add('is-invalid');
+    emailError.textContent = message;
+    emailInput.setAttribute('aria-invalid', 'true');
+  };
+
+  /**
+   * Limpa a mensagem de erro do campo de e-mail.
+   */
+  const clearError = () => {
+    emailInput.classList.remove('is-invalid');
+    emailError.textContent = '';
+    emailInput.setAttribute('aria-invalid', 'false');
+  };
+
+  /**
+   * Controla a transição entre as telas.
+   * @param {string} screenToShowId - O ID da tela a ser exibida.
+   */
+  const switchScreen = (screenToShowId) => {
+    // Esconde a tela ativa
+    const activeScreen = document.querySelector('.screen:not(.is-hidden)');
+    if (activeScreen) {
+      activeScreen.classList.add('is-hidden');
+    }
+    
+    // Mostra a nova tela após um pequeno delay para a animação de fade-out
+    setTimeout(() => {
+        const screenToShow = document.getElementById(screenToShowId);
+        if(screenToShow) {
+            screenToShow.classList.remove('is-hidden');
+        }
+    }, 300); // Deve corresponder à duração da transição no CSS
+  };
+
+  /**
+   * Manipula o evento de submissão do formulário.
+   * @param {Event} event - O objeto do evento de submissão.
+   */
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    clearError();
+
+    const email = emailInput.value.trim();
+
+    // --- Validação ---
+    if (!email) {
+      displayError('Este campo é obrigatório.');
+      emailInput.focus();
+      return;
+    }
+    if (!isValidEmail(email)) {
+      displayError('Por favor, insira um e-mail válido.');
+      emailInput.focus();
+      return;
+    }
+
+    // --- Simulação de Envio ---
+    submitButton.classList.add('is-loading');
+    submitButton.disabled = true;
+    emailInput.disabled = true;
+
+    // Simula uma espera de rede de 1.5 segundos.
+    setTimeout(() => {
+      // Atualiza o e-mail na tela de verificação
+      userEmailPlaceholder.textContent = email;
+      
+      // Aciona a transição para a próxima tela
+      switchScreen('verify-screen');
+
+    }, 1500);
+  };
+
+  // --- Adiciona os Event Listeners ---
+  if (form) {
+    form.addEventListener('submit', handleFormSubmit);
+  }
+  if (emailInput) {
+    emailInput.addEventListener('input', clearError);
+  }
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Focus Learn</title>
+  <link rel="icon" type="image/png" href="../img/icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================== ================================================
+       1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    :root {
+      /* Cores Oficiais */
+      --color-primary: #3C315B;
+      --color-secondary: #3D4759;
+      --color-accent: #00E3B3;
+      --color-complement-1: #483B6D;
+      --color-complement-2: #7B64D9;
+      --color-background: #FDFCFE;
+      --color-page-bg: #F0F0F9;
+      
+      /* Cores de UI e Feedback */
+      --color-text-primary: var(--color-secondary);
+      --color-text-light: #f8f9fa;
+      --color-border: #d1d5db;
+      --color-border-focus: var(--color-complement-2);
+      --color-placeholder: #9ca3af;
+      --color-disabled: #e5e7eb;
+
+      /* Tipografia */
+      --font-family-main: 'Inter', sans-serif;
+      
+      /* Espaçamentos e Medidas */
+      --spacing-sm: 0.5rem;   /* 8px */
+      --spacing-md: 1rem;     /* 16px */
+      --spacing-lg: 1.5rem;   /* 24px */
+      --spacing-xl: 2rem;     /* 32px */
+      
+      --border-radius-md: 12px;
+      --border-radius-sm: 8px;
+      
+      /* Sombras */
+      --box-shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.1);
+      
+      /* Transições */
+      --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================================
+       2. ESTILOS GLOBAIS E RESET - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-main);
+      background-color: var(--color-page-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       3. LAYOUT PRINCIPAL - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+
+    /* ==========================================================================
+       4. COMPONENTES (CARD, FORMULÁRIO, BOTÕES) - DA BASE DE REFERÊNCIA
+       ========================================================================== */
+
+    /* --- Card --- */
+    .login-card {
+      background-color: var(--color-background);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--box-shadow-card);
+      padding: var(--spacing-lg);
+      width: 100%;
+      /* Ajustado para o max-width do CÓDIGO 2, mas um pouco menor para margens */
+      max-width: 960px; 
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-card__title {
+      font-size: clamp(1.75rem, 5vw, 2rem); /* 30px é 1.875rem, arredondado */
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* --- Formulário --- */
+    .form {
+      text-align: left;
+      width: 100%;
+    }
+
+    .form__group {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .form__label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-secondary);
+    }
+
+    .form__input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      transition: border-color var(--transition-default), box-shadow var(--transition-default);
+    }
+
+    .form__input::placeholder {
+      color: var(--color-placeholder);
+    }
+    .form__input:focus, .form__input:focus-visible {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.2);
+    }
+
+    /* --- Botão --- */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0.875rem 1rem;
+      font-size: 1.1rem;
+      font-family: inherit;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      transition: background-color var(--transition-default), transform var(--transition-default), box-shadow var(--transition-default);
+      user-select: none;
+      text-decoration: none;
+      margin-top: var(--spacing-sm);
+    }
+
+    .btn--primary {
+      background-color: var(--color-complement-1);
+      color: var(--color-text-light);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(60, 49, 91, 0.3);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(72, 59, 109, 0.4);
+    }
+
+
+    /* ==========================================================================
+       5. NOVOS ESTILOS (Específicos da Tela de Cadastro 2)
+       ========================================================================== */
+
+    .signup-header {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* Empilha em mobile */
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-lg);
+      gap: var(--spacing-sm);
+    }
+    
+    .signup-header__step {
+      color: var(--color-complement-2); /* Cor --step original */
+      font-size: 0.875rem; /* 14px */
+      font-weight: 700;
+    }
+
+    .signup-progress {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background-color: var(--color-border); /* Cor de trilha mais suave */
+      overflow: hidden;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .signup-progress__bar {
+      height: 100%;
+      background-color: var(--color-complement-2); /* Cor --accent original */
+      width: 0%; /* JS vai definir isso */
+      border-radius: 999px;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .form__actions {
+      text-align: right; /* Alinha o botão à direita */
+      margin-top: var(--spacing-lg);
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE (Ajustes da Base + Novos)
+       ========================================================================== */
+    
+    @media (min-width: 48em) { /* 768px */
+      .login-card {
+        padding: var(--spacing-xl) 2.5rem;
+      }
+      
+      .signup-header {
+        flex-direction: row; /* Lado a lado em desktop */
+        align-items: center;
+      }
+
+      /* Novo: Formulário em duas colunas */
+      .form--split {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-lg);
+      }
+      
+      .form--split .form__group {
+        flex: 1; /* Cada grupo de formulário ocupa metade do espaço */
+      }
+
+      .btn--split-action {
+        width: auto; /* Botão não ocupa 100% */
+        min-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <main class="main-container">
+    
+    <section class="login-card">
+      
+      <header class="signup-header">
+        <h1 class="login-card__title">Você é...</h1>
+        <span class="signup-header__step">1 de 3 passos</span>
+      </header>
+
+      <div class="signup-progress">
+        <div class="signup-progress__bar"></div>
+      </div>
+
+      <form class="form form--split" action="#" onsubmit="return false;">
+        
+        <div class="form__group">
+          <label for="nome" class="form__label">Nome</label>
+          <input type="text" id="nome" name="nome" class="form__input" placeholder="Digite seu nome" />
+        </div>
+
+        <div class="form__group">
+          <label for="sobrenome" class="form__label">Sobrenome</label>
+          <input type="text" id="sobrenome" name="sobrenome" class="form__input" placeholder="Digite seu sobrenome" />
+        </div>
+      </form>
+      
+      <div class="form__actions">
+        <a onclick="window.location.href='cadastro3.html'" class="btn btn--primary btn--split-action">Continuar</a>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // Espera o conteúdo da página carregar (boa prática)
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Seleciona a barra de progresso
+      const progressBar = document.querySelector('.signup-progress__bar');
+      
+      if (progressBar) {
+        // Define a largura inicial para 33%
+        // Usar setTimeout(0) garante que a transição CSS ocorra
+        setTimeout(() => {
+          progressBar.style.width = '33%';
+        }, 0);
+      }
+    });
+  </script>
+
+</body>
+</html>

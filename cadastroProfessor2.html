@@ -1,0 +1,521 @@
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Focus Learn</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* ==========================================================================
+        1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS)
+        ========================================================================== */
+      :root {
+        /* Cores Oficiais */
+        --color-primary: #3C315B;
+        --color-secondary: #3D4759;
+        --color-accent: #00E3B3;
+        --color-complement-1: #483B6D;
+        --color-complement-2: #7B64D9;
+        --color-background: #FDFCFE;
+        --color-page-bg: #F0F0F9;
+        
+        /* Cores de UI e Feedback */
+        --color-text-primary: var(--color-secondary);
+        --color-text-light: #f8f9fa;
+        --color-border: #d1d5db;
+        --color-border-focus: var(--color-complement-2);
+        
+        /* Cores MANTIDAS DO CÓDIGO 2 */
+        --color-input-custom-border: #6D66A0;
+        --color-input-custom-bg: rgba(226, 223, 254, 0.15);
+        --color-input-custom-placeholder: rgba(61, 71, 89, 0.45);
+
+        /* Tipografia */
+        --font-family-main: 'Inter', sans-serif;
+        
+        /* Espaçamentos e Medidas */
+        --spacing-sm: 0.5rem;   /* 8px */
+        --spacing-md: 1rem;     /* 16px */
+        --spacing-lg: 1.5rem;   /* 24px */
+        --spacing-xl: 2rem;     /* 32px */
+        
+        --border-radius-md: 12px;
+        --border-radius-sm: 8px;
+        --border-radius-xs: 4px; /* Raio do CÓDIGO 2 MANTIDO */
+        
+        /* Sombras */
+        --box-shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.1);
+        
+        /* Transições */
+        --transition-default: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* ==========================================================================
+        2. ESTILOS GLOBAIS E RESET
+        ========================================================================== */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-family-main);
+        background-color: var(--color-page-bg);
+        color: var(--color-text-primary);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ==========================================================================
+        3. LAYOUT PRINCIPAL
+        ========================================================================== */
+      .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: var(--spacing-md);
+      }
+
+      /* ==========================================================================
+        4. COMPONENTES (CARD, FORMULÁRIO, BOTÕES)
+        ========================================================================== */
+
+      .login-card {
+        background-color: var(--color-background);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--box-shadow-card);
+        padding: var(--spacing-lg);
+        width: 100%;
+        max-width: 1024px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .login-card__title {
+        font-size: clamp(1.5rem, 4vw, 1.875rem);
+        font-weight: 700;
+        color: var(--color-primary);
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      .form {
+        text-align: left;
+        width: 100%;
+      }
+
+      .form__group {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .form__label {
+        display: block;
+        font-size: 1.125rem; /* 18px MANTIDO */
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-text-primary);
+      }
+
+      .form__input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        font-family: inherit;
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius-xs);
+        transition: border-color var(--transition-default), box-shadow var(--transition-default);
+      }
+
+      .form__input:focus, .form__input:focus-visible {
+        outline: none;
+        border-color: var(--color-border-focus);
+        box-shadow: 0 0 0 3px rgba(123, 100, 217, 0.2);
+      }
+
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.875rem 1rem;
+        font-size: 1rem; /* 15px ajustado */
+        font-family: inherit;
+        font-weight: 700;
+        border: none;
+        border-radius: var(--border-radius-xs);
+        cursor: pointer;
+        transition: background-color var(--transition-default), transform var(--transition-default);
+        user-select: none;
+        text-decoration: none;
+      }
+
+      .btn--primary {
+        background-color: var(--color-complement-1);
+        color: var(--color-text-light);
+      }
+
+      .btn--primary:hover {
+        background-color: var(--color-primary);
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      /* ==========================================================================
+        5. ESTILOS DA TELA (PROGRESSO, TAGS)
+        ========================================================================== */
+
+      .signup-header {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Mobile */
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-lg);
+        gap: var(--spacing-sm);
+      }
+      
+      .signup-header__step {
+        color: var(--color-complement-2);
+        font-size: 0.875rem;
+        font-weight: 700;
+      }
+
+      .signup-progress {
+        width: 100%;
+        height: 10px;
+        border-radius: var(--border-radius-xs);
+        background-color: var(--color-secondary);
+        overflow: hidden;
+        margin-bottom: var(--spacing-xl);
+      }
+      
+      .signup-progress__bar {
+        height: 100%;
+        background-color: var(--color-complement-2);
+        width: 0%; /* JS vai definir isso */
+        border-radius: 999px;
+        transition: width 1s ease-in-out;
+      }
+
+      /* Estilo de input MANTIDO */
+      .form__input--custom-style {
+        border: 2.5px solid var(--color-input-custom-border);
+        background-color: var(--color-input-custom-bg);
+        padding: 1.25rem 1rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+      }
+      
+      .form__input--custom-style::placeholder {
+        color: var(--color-input-custom-placeholder);
+        font-weight: 700;
+        font-size: 1.125rem;
+      }
+
+      /* --- [MELHORIA] Seletor de Tags --- */
+      
+      .tags-wrapper {
+        position: relative;
+        width: 100%;
+      }
+      
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        min-height: 65px;
+        border: 2.5px solid var(--color-input-custom-border);
+        border-radius: var(--border-radius-xs);
+        background: var(--color-input-custom-bg);
+        padding: 0.5rem; /* 8px */
+        gap: 0.5rem; /* 8px */
+        cursor: pointer;
+        transition: border-color var(--transition-default);
+      }
+      
+      .tags-container:focus-within,
+      .tags-container.is-open {
+        border-color: var(--color-border-focus);
+      }
+      
+      /* [MELHORIA] Placeholder CSS-only */
+      .tags-container::before {
+        content: 'Selecione as matérias...';
+        color: var(--color-input-custom-placeholder);
+        font-family: var(--font-family-main);
+        font-size: 1.125rem;
+        font-weight: 700;
+        padding-left: 0.5rem;
+      }
+      
+      .tags-container:has(.tag)::before {
+        display: none;
+      }
+      
+      /* [MELHORIA] Estilo da Tag */
+      .tag {
+        display: flex;
+        align-items: center;
+        background-color: var(--color-complement-2); /* Cor da identidade */
+        color: var(--color-text-light);
+        font-size: 0.875rem; /* 14px */
+        font-weight: 600;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-xs);
+      }
+      
+      .tag-remove {
+        margin-left: var(--spacing-sm);
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+      }
+      .tag-remove:hover {
+        opacity: 1;
+      }
+
+      /* [MELHORIA] Dropdown de Matérias */
+      #materia-select {
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        border: 2px solid var(--color-border-focus);
+        border-top: none;
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        background: var(--color-background);
+        box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        
+        max-height: 0; /* JS controla a animação */
+        opacity: 0;
+        overflow-y: auto;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        padding: 0;
+      }
+      
+      #materia-select.visible {
+        max-height: 200px;
+        opacity: 1;
+        padding: var(--spacing-sm);
+      }
+      
+      /* [MELHORIA] Estilo das Opções */
+      #materia-select option {
+        font-family: var(--font-family-main);
+        font-weight: 600;
+        color: var(--color-text-primary);
+        padding: 0.75rem var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+        cursor: pointer;
+      }
+      
+      #materia-select option:hover {
+        background-color: var(--color-page-bg);
+      }
+      
+      #materia-select option:disabled {
+        color: var(--color-border);
+        background-color: #f9f9f9;
+        cursor: not-allowed;
+      }
+
+
+      /* Ações do formulário responsivas */
+      .form__actions {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse; /* Botão primeiro em mobile */
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+      }
+      
+      .form__link-back {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-complement-2);
+        text-decoration: none;
+        text-align: center;
+        padding: var(--spacing-sm);
+      }
+      .form__link-back:hover { 
+        text-decoration: underline;
+      }
+
+      .btn--responsive-action {
+        width: 100%; /* Ocupa 100% em mobile */
+      }
+
+      /* ==========================================================================
+        6. RESPONSIVIDADE
+        ========================================================================== */
+      
+      @media (min-width: 48em) { /* 768px */
+        .login-card {
+          padding: var(--spacing-xl) 2.5rem;
+        }
+        
+        .signup-header {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .form__actions {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .form__link-back {
+            text-align: left;
+        }
+        
+        .btn--responsive-action {
+          width: auto;
+          min-width: 239px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <main class="main-container">
+      
+      <section class="login-card">
+        
+        <header class="signup-header">
+          <h1 class="login-card__title">Complete sua conta de Professor</h1>
+          <span class="signup-header__step">3 de 3 passos</span>
+        </header>
+
+        <div class="signup-progress">
+          <div class="signup-progress__bar"></div>
+        </div>
+
+        <form class="form" id="professor-form-final">
+          
+          <div class="form__group">
+            <label for="apelido" class="form__label">Por qual nomes os alunos te chamam?</label>
+            <input 
+              type="text" 
+              id="apelido" 
+              name="escola" 
+              class="form__input form__input--custom-style" 
+              placeholder="Digite o seu apelido"
+            >
+          </div>
+
+          <div class="form__group">
+            <label class="form__label">Materias Ensinadas</label>
+            
+            <div class="tags-wrapper">
+              
+              <div class="tags-container" tabindex="0">
+                </div>
+              
+              <select id="materia-select" multiple>
+                <option value="matematica">Matemática</option>
+                <option value="educacao-financeira">Educação Financeira</option>
+                <option value="biologia">Biologia</option>
+                <option value="historia">História</option>
+                <option value="geografia">Geografia</option>
+                <option value="fisica">Física</option>
+                <option value="quimica">Química</option>
+                <option value="portugues">Português</option>
+                <option value="programação">Programação</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form__actions">
+            <a href="cadastroProfessor.html" class="form__link-back">Voltar</a> 
+            <button class="btn btn--primary btn--responsive-action">
+            <a href="../landingpage/index.html" style="color: inherit; text-decoration: none;">Complete o cadastro</a>
+            </button>
+          </div>
+          
+        </form>
+      </section>
+    </main>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const progressBar = document.querySelector('.signup-progress__bar');
+        if (progressBar) {
+          setTimeout(() => {
+            progressBar.style.width = '100%';
+          }, 0);
+        }
+      });
+    </script>
+
+    <script>
+      const materiaSelect = document.getElementById('materia-select');
+      const tagsContainer = document.querySelector('.tags-container');
+      
+      // Adiciona a classe 'is-open' ao container para o CSS focar
+      tagsContainer.addEventListener('click', () => {
+        materiaSelect.classList.toggle('visible');
+        tagsContainer.classList.toggle('is-open');
+      });
+      
+      materiaSelect.addEventListener('change', (event) => {
+        const selectedOption = event.target.options[event.target.selectedIndex];
+        if (selectedOption.value) {
+          const newTag = document.createElement('div');
+          newTag.className = 'tag';
+          newTag.innerHTML = `
+            <span>${selectedOption.text}</span>
+            <span class="tag-remove" data-value="${selectedOption.value}">&times;</span>
+          `;
+          
+          // Insere a tag antes do placeholder (que é :before)
+          tagsContainer.appendChild(newTag);
+          selectedOption.disabled = true;
+          
+          // Reseta o select para não ficar com a opção selecionada
+          materiaSelect.selectedIndex = -1;
+          
+          newTag.querySelector('.tag-remove').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const valueToEnable = e.target.getAttribute('data-value');
+            newTag.remove();
+            
+            // Re-habilita a opção no select
+            const optionToEnable = materiaSelect.querySelector(`option[value="${valueToEnable}"]`);
+            if (optionToEnable) {
+              optionToEnable.disabled = false;
+            }
+          });
+        }
+      });
+      
+      // Fecha o dropdown ao clicar fora
+      document.addEventListener('click', (e) => {
+        if (!tagsContainer.contains(e.target) && !materiaSelect.contains(e.target)) {
+          materiaSelect.classList.remove('visible');
+          tagsContainer.classList.remove('is-open');
+        }
+      });
+    </script>
+
+  </body>
+  </html>
