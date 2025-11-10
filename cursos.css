@@ -53,8 +53,8 @@ body{
 .top{
   position:relative;min-height:156px;
   background:
-    url('../../img/tbright.png') no-repeat right top,
-    url('../../img/topbar.png') no-repeat left top;
+    url('tbright.png') no-repeat right top,
+    url('topbar.png') no-repeat left top;
   background-size: auto 60%, cover;
 }
 .top-right{position:absolute;right:29px;top:17.5px;display:flex;align-items:center;gap:17px}
@@ -122,8 +122,8 @@ body{
 .ck-meta__value{font-size:15.2px;line-height:19.76px;font-weight:500;color:var(--ck-meta-value)}
 .ck-card__clock{width:14px;height:14px;display:block;margin-top:6px}
 
-.ck-card--gradient{background:url('../../img/cards2/cardbg.png') no-repeat center/cover;border:none}
-.ck-card--gradient2{background:url('../../img/cards2/cardbg2.png') no-repeat center/cover;border:none}
+.ck-card--gradient{background:url('cards2/cardbg.png') no-repeat center/cover;border:none}
+.ck-card--gradient2{background:url('cards2/cardbg2.png') no-repeat center/cover;border:none}
 .ck-card--gradient .ck-card__thumb{background:transparent;margin:14px}
 .ck-card--gradient .ck-card__tags{margin:12px var(--ck-gutter-x)}
 .ck-card--gradient .ck-card__title{color:#FDFCFE}
@@ -367,7 +367,7 @@ body{
 .catalog-filters .label{color:#727272;font-weight:400;margin-right:4px}
 .chip{background:#F5F2FF;border:1px solid #727272;color:#3C315B;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
 .chip-select{position:relative;padding-right:30px}
-.chip-select::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:8px;height:12px;background:url('../../img/down2.png') no-repeat center/25px}
+.chip-select::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:8px;height:12px;background:url('down2.png') no-repeat center/25px}
 .chip-ghost{color:#6B7280;font-weight:400}
 
 
