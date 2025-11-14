@@ -1,4 +1,4 @@
-📚 Landing Page - Focus Learn
+📚 Focus Learn
 ---
 
 
