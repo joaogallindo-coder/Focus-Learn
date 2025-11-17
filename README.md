@@ -8,12 +8,6 @@
 
 <br>
 
-🌐 Visualize o projeto:
----
-👉 [Clique aqui para acessar](https://joaogallindo.github.io/Focus-Learn/)
-
-<br>
-
 📄 Telas
 --- 
 
@@ -36,4 +30,8 @@ Espaço onde o aluno acompanha seu progresso, status dos cursos e trilha de apre
 Exibe todos os cursos disponíveis, com detalhes, descrição e opções de acesso ao conteúdo.
 
  
+<br>
 
+🌐 Visualize o projeto:
+---
+👉 [Clique aqui para acessar](https://joaogallindo.github.io/Focus-Learn/)
