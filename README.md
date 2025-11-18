@@ -46,7 +46,7 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - João Gabriel Galindo - [LinkedIn](https://www.linkedin.com/in/joao-gabriel-galindo/)
 
-- Pedro Henrique de Amorim Lassance - 
+- Pedro Henrique de Amorim Lassance - [LinkedIn](ttps://www.linkedin.com/in/pedro-lassance-50a497338/)
 
 
 
