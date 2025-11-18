@@ -39,7 +39,7 @@
 .ck-card__clock{width:14px;height:14px;display:block;margin-top:6px}
 
 /* Variant: gradient skin (keeps bordered metrics) */
-.ck-card--gradient{background:url('../../img/cards2/cardbg.png') no-repeat center/cover;border:none}
+.ck-card--gradient{background:url('../images/cardbg.png') no-repeat center/cover;border:none}
 .ck-card--gradient .ck-card__thumb{background:transparent;margin:14px}
 .ck-card--gradient .ck-card__tags{margin:12px var(--ck-gutter-x)}
 .ck-card--gradient .ck-card__title{color:#FDFCFE}
