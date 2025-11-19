@@ -1089,7 +1089,7 @@ body {
 
 .chip-select {
   position: relative;
-  padding-right: 30px
+  padding-right: 14px
 }
 
 .chip-select::after {
