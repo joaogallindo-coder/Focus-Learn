@@ -69,14 +69,26 @@ document.addEventListener('DOMContentLoaded', function () {
             currentSlide = 0;
             updateCarousel();
         }
+
+
+
+
+
     }
 
     window.addEventListener('resize', checkScreenSize);
     window.addEventListener('load', checkScreenSize);
 
+    
 
 
 });
+
+
+
+
+
+
 
 
 

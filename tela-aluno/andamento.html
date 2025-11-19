@@ -1,315 +1,368 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Focus Learn - Minha Jornada</title>
-  <link rel="icon" type="image/png" href="../favicon.png" />
-  <link rel="stylesheet" href="../Source/cursos.css" />
-  <meta name="color-scheme" content="light only" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="robots" content="noindex" />
-</head>
-<body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-badge">
-          <img src="../images/logo2.png" alt="Logo Focus Learn" />
-        </div>
-        <span class="brand-text">FOCUS LEARN</span>
-      </div>
-
-      <nav class="menu">
-        <a class="item" href="homeAlunos.html">
-          <span class="ico"><img src="../images/home.png" alt="" /></span>
-          <span class="label">Home</span>
-        </a>
-        <a class="item" href="andamento.html">
-          <span class="icon"><img src="../images/minhajornada.png" alt="" /></span>
-          <span class="label">Minha Jornada</span>
-        </a>
-        <a class="item" href="cursos.html">
-          <span class="ico"><img src="../images/cursos.png" alt="" /></span>
-          <span class="label">Cursos</span>
-        </a>
-        <a class="item" href="#">
-          <span class="ico"><img src="../images/atividades.png" alt="" /></span>
-          <span class="label">Atividades</span>
-        </a>
-        <a class="item" href="#">
-          <span class="ico"><img src="../images/videoaula.png" alt="" /></span>
-          <span class="label">Video Aula</span>
-        </a>
-        <a class="item" href="#">
-          <span class="ico"><img src="../images/turmas.png" alt="" /></span>
-          <span class="label">Turmas</span>
-        </a>
-        <a class="item" href="#">
-          <span class="ico"><img src="../images/downloads.png" alt="" /></span>
-          <span class="label">Downloads</span>
-        </a>
-      </nav>
-
-      <div class="settings">
-        <div class="section-title">Ajustes</div>
-        <a class="item" href="#">
-          <span class="ico"><img src="../images/config.png" alt="" /></span>
-          <span class="label">Configuração</span>
-        </a>
-        <a class="item logout" href="#">
-          <span class="ico"><img src="../images/logout.png" alt="" /></span>
-          <span class="label">Sair</span>
-        </a>
-      </div>
-    </aside>
-
-    <main class="content">
-      <header class="top">
-        <div class="top-right">
-          <button class="icon-btn" aria-label="Notificações">
-            <img src="../images/bell.png" alt="" />
-            <span class="badge">12</span>
-          </button>
-          <button class="icon-btn" aria-label="Atalhos">
-            <img src="../images/rocketbt.png" alt="" />
-          </button>
-          <div class="user">
-            <div class="user-info">
-              <strong class="name"style="margin-bottom: 5px;">Usuário da silva1</strong>
-              <span class="role">Estudante</span>
-            </div>
-            <button class="circle" aria-label="Conta"><img src="../images/user.png" alt="" /></button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Learn - Minha Jornada</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" href="../Source/cursos.css" />
+    <meta name="color-scheme" content="light only" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-badge">
+            <img src="../images/logo2.png" alt="Logo Focus Learn" />
           </div>
-        </div>
-      </header>
-
-      <section class="journey">
-        <div class="journey-card">
-          <div class="journey-progress">
-            <div class="jprog" style="--val:35">
-              <div class="ring" aria-hidden="true"></div>
-              <div class="percent" aria-label="35%">35%</div>
-            </div>
-            <div class="caption">Conclusão geral</div>
-          </div>
-
-          <div class="journey-main">
-            <div class="journey-head">
-              <h2>Sua jornada de conquistas</h2>
-              <p>Você conquistou 5 conquistas. Continue com o ótimo trabalho!</p>
-            </div>
-
-            <div class="journey-stats">
-              <article class="jstat">
-                <header class="jstat-head">
-                  <img src="../images/check.png" alt="Concluído" />
-                  <span class="label">Concluído</span>
-                </header>
-                <div class="value">5</div>
-                <div class="desc">Conquistas desbloqueadas</div>
-              </article>
-
-              <article class="jstat">
-                <header class="jstat-head">
-                  <img src="../images/wait.png" alt="Em andamento" />
-                  <span class="label">Em andamento</span>
-                </header>
-                <div class="value">7</div>
-                <div class="desc">Conquistas para desbloquear</div>
-              </article>
-
-              <article class="jstat jstat--premium">
-                <header class="jstat-head">
-                  <img src="../images/rocketbtn.png" alt="Premium" />
-                  <span class="label grad">Premium+</span>
-                </header>
-                <div class="value">2</div>
-                <div class="desc">Conquistas para desbloquear</div>
-              </article>
-            </div>
-          </div>
+          <span class="brand-text">FOCUS LEARN</span>
         </div>
 
-        <nav class="journey-menu" aria-label="Filtro da jornada">
-          <button class="jtab" type="button">Concluído</button>
-          <button class="jtab active" type="button">Em andamento</button>
-          <button class="jtab" type="button">Premium</button>
+        <nav class="menu">
+          <a class="item" href="homeAlunos.html">
+            <span class="ico"><img src="../images/home.png" alt /></span>
+            <span class="label">Home</span>
+          </a>
+          <a class="item" href="andamento.html">
+            <span class="icon"><img src="../images/minhajornada.png"
+                alt /></span>
+            <span class="label">Minha Jornada</span>
+          </a>
+          <a class="item" href="cursos.html">
+            <span class="ico"><img src="../images/cursos.png" alt /></span>
+            <span class="label">Cursos</span>
+          </a>
+          <a class="item" href="#">
+            <span class="ico"><img src="../images/atividades.png" alt /></span>
+            <span class="label">Atividades</span>
+          </a>
+          <a class="item" href="#">
+            <span class="ico"><img src="../images/videoaula.png" alt /></span>
+            <span class="label">Video Aula</span>
+          </a>
+          <a class="item" href="#">
+            <span class="ico"><img src="../images/turmas.png" alt /></span>
+            <span class="label">Turmas</span>
+          </a>
+          <a class="item" href="#">
+            <span class="ico"><img src="../images/downloads.png" alt /></span>
+            <span class="label">Downloads</span>
+          </a>
         </nav>
 
-        <div class="journey-cards">
-          
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/cripto.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip ck-chip--new">Novo!!</span>
-              <span class="ck-chip"><img src="../images/xp2.png" alt="" /> 50 XP</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 5,0</span>
-            </div>
-            <h3 class="ck-card__title">Criptomoedas: Ethereum para Iniciantes</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 38%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
+        <div class="settings">
+          <div class="section-title">Ajustes</div>
+          <a class="item" href="#">
+            <span class="ico"><img src="../images/config.png" alt /></span>
+            <span class="label">Configuração</span>
           </a>
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/ordinals.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip ck-chip--new">Novo!!</span>
-              <span class="ck-chip"><img src="../images/xp2.png" alt="" /> 50 XP</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 4,5</span>
-            </div>
-            <h3 class="ck-card__title"><br>O que são Ordinais (Bitcoin NFTs)?</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 28%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
-          </a>
-
-
-           <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/javascript.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip"><img src="../images/xp2.png" alt="" /> 50 XP</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-user.png" alt="" /> Mais de 20K</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 5,0</span>
-            </div>
-            <h3 class="ck-card__title"><br>JavaScript 2025</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 69%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
-          </a>
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/react.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip ck-chip--new">Novo!!</span>
-              <span class="ck-chip"><img src="../images/xp2.png" alt="" /> 50 XP</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 5,0</span>
-            </div>
-            <h3 class="ck-card__title"><br>JavaScript 2025</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 20%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
-          </a>
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/excel.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip"><img src="../images/xp2.png" alt="" /> 50 XP</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-user.png" alt="" /> 12K</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 4,5</span>
-            </div>
-            <h3 class="ck-card__title"><br>Inteligência Artificial com Excel</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 76%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
-          </a>
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/adm.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip ck-chip--new">Novo!!</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-user.png" alt="" /> Mais de 1K</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 4,5</span>
-            </div>
-            <h3 class="ck-card__title">Contratação de serviços de publicidade na administração</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 80%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
-          </a>
-
-
-
-          <a class="ck-card" href="paginaEmBuild.html" style="text-decoration: none;">
-            <div class="ck-card__thumb"><img src="../images/foto.png" alt="" /></div>
-            <div class="ck-card__tags">
-              <span class="ck-chip ck-chip--new">Novo!!</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-user.png" alt="" /> Mais de 1K</span>
-              <span class="ck-chip ck-chip--light"><img src="../images/icon-star.png" alt="" /> 5,0</span>
-            </div>
-            <h3 class="ck-card__title"><br>FDB | Fotografia Digital (Básico)</h3>
-            <div class="ck-card__progress"><span class="bar" style="width: 50%"></span></div>
-            <div class="ck-card__meta">
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Conteudista:</span>
-                <span class="ck-meta__value">Osvaldo Reunião: Cientista de Dados</span>
-              </div>
-              <div class="ck-meta__row">
-                <span class="ck-meta__label">Carga horária</span>
-                <span class="ck-meta__value">30h</span>
-                <img class="ck-card__clock" src="../images/clock2.png" alt="Relógio" />
-              </div>
-            </div>
+          <a class="item logout" href="#">
+            <span class="ico"><img src="../images/logout.png" alt /></span>
+            <span class="label">Sair</span>
           </a>
         </div>
-      </section>
-    </main>
-  </div>
-  <script src="../Source/andamento.js"></script>
-</body>
+      </aside>
+
+      <main class="content">
+        <header class="top">
+          <div class="top-left">
+            <button class="menu-btn" aria-label="Menu oculto">
+              <img src="../images/menu.png" alt="menu-botton">
+            </button>
+          </div>
+
+          <div class="top-right">
+            <button class="icon-btn" aria-label="Notificações">
+              <img src="../images/bell.png" alt />
+              <span class="badge">12</span>
+            </button>
+            <button class="icon-btn" aria-label="Atalhos">
+              <img src="../images/rocketbt.png" alt />
+            </button>
+            <div class="user">
+              <div class="user-info">
+                <strong class="name" style="margin-bottom: 5px;">Usuário da
+                  silva1</strong>
+                <span class="role">Estudante</span>
+              </div>
+              <button class="circle" aria-label="Conta"><img
+                  src="../images/user.png" alt /></button>
+            </div>
+          </div>
+        </header>
+
+        <section class="journey">
+          <div class="journey-card">
+            <div class="journey-progress">
+              <div class="jprog" style="--val:35">
+                <div class="ring" aria-hidden="true"></div>
+                <div class="percent" aria-label="35%">35%</div>
+              </div>
+              <div class="caption">Conclusão geral</div>
+            </div>
+
+            <div class="journey-main">
+              <div class="journey-head">
+                <h2>Sua jornada de conquistas</h2>
+                <p>Você conquistou 5 conquistas. Continue com o ótimo
+                  trabalho!</p>
+              </div>
+
+              <div class="journey-stats">
+                <article class="jstat">
+                  <header class="jstat-head">
+                    <img src="../images/check.png" alt="Concluído" />
+                    <span class="label">Concluído</span>
+                  </header>
+                  <div class="value">5</div>
+                  <div class="desc">Conquistas desbloqueadas</div>
+                </article>
+
+                <article class="jstat">
+                  <header class="jstat-head">
+                    <img src="../images/wait.png" alt="Em andamento" />
+                    <span class="label">Em andamento</span>
+                  </header>
+                  <div class="value">7</div>
+                  <div class="desc">Conquistas para desbloquear</div>
+                </article>
+
+                <article class="jstat jstat--premium">
+                  <header class="jstat-head">
+                    <img src="../images/rocketbtn.png" alt="Premium" />
+                    <span class="label grad">Premium+</span>
+                  </header>
+                  <div class="value">2</div>
+                  <div class="desc">Conquistas para desbloquear</div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <nav class="journey-menu" aria-label="Filtro da jornada">
+            <button class="jtab" type="button">Concluído</button>
+            <button class="jtab active" type="button">Em andamento</button>
+            <button class="jtab" type="button">Premium</button>
+          </nav>
+
+          <div class="journey-cards">
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/cripto.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip ck-chip--new">Novo!!</span>
+                <span class="ck-chip"><img src="../images/xp2.png" alt /> 50
+                  XP</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 5,0</span>
+              </div>
+              <h3 class="ck-card__title">Criptomoedas: Ethereum para
+                Iniciantes</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 38%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/ordinals.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip ck-chip--new">Novo!!</span>
+                <span class="ck-chip"><img src="../images/xp2.png" alt /> 50
+                  XP</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 4,5</span>
+              </div>
+              <h3 class="ck-card__title"><br>O que são Ordinais (Bitcoin
+                NFTs)?</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 28%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/javascript.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip"><img src="../images/xp2.png" alt /> 50
+                  XP</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-user.png" alt /> Mais de 20K</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 5,0</span>
+              </div>
+              <h3 class="ck-card__title"><br>JavaScript 2025</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 69%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/react.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip ck-chip--new">Novo!!</span>
+                <span class="ck-chip"><img src="../images/xp2.png" alt /> 50
+                  XP</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 5,0</span>
+              </div>
+              <h3 class="ck-card__title"><br>JavaScript 2025</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 20%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/excel.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip"><img src="../images/xp2.png" alt /> 50
+                  XP</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-user.png" alt /> 12K</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 4,5</span>
+              </div>
+              <h3 class="ck-card__title"><br>Inteligência Artificial com
+                Excel</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 76%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/adm.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip ck-chip--new">Novo!!</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-user.png" alt /> Mais de 1K</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 4,5</span>
+              </div>
+              <h3 class="ck-card__title">Contratação de serviços de publicidade
+                na administração</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 80%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+
+            <a class="ck-card" href="paginaEmBuild.html"
+              style="text-decoration: none;">
+              <div class="ck-card__thumb"><img src="../images/foto.png"
+                  alt /></div>
+              <div class="ck-card__tags">
+                <span class="ck-chip ck-chip--new">Novo!!</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-user.png" alt /> Mais de 1K</span>
+                <span class="ck-chip ck-chip--light"><img
+                    src="../images/icon-star.png" alt /> 5,0</span>
+              </div>
+              <h3 class="ck-card__title"><br>FDB | Fotografia Digital
+                (Básico)</h3>
+              <div class="ck-card__progress"><span class="bar"
+                  style="width: 50%"></span></div>
+              <div class="ck-card__meta">
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Conteudista:</span>
+                  <span class="ck-meta__value">Osvaldo Reunião: Cientista de
+                    Dados</span>
+                </div>
+                <div class="ck-meta__row">
+                  <span class="ck-meta__label">Carga horária</span>
+                  <span class="ck-meta__value">30h</span>
+                  <img class="ck-card__clock" src="../images/clock2.png"
+                    alt="Relógio" />
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="../Source/andamento.js"></script>
+    <script src="../Source/menu.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
