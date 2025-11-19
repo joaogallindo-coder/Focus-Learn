@@ -31,18 +31,35 @@ body {
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 294px;
-  background: #FDFCFE;
-  border-right: 1px solid var(--border);
-  padding: 7.5px 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 294px;
+    background: #FDFCFE;
+    border-right: 1px solid var(--border);
+    padding: 7.5px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
 }
+
+
+.sidebar.sidebar-hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.sidebar-hidden ~ .content {
+    margin-left: 0;
+}
+
+
+
 
 .brand {
   display: flex;
@@ -163,8 +180,11 @@ body {
 .content {
   margin-left: 294px;
   flex: 1;
-  min-width: 0
+  min-width: 0;
+  ;
 }
+
+
 
 .top {
   position: relative;
@@ -183,6 +203,38 @@ body {
   align-items: center;
   gap: 17px
 }
+
+
+.top-left {
+  display: none;
+}
+
+
+
+.menu-btn {
+  position: relative;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: none
+}
+
+
+.menu-btn img {
+  width: 20px;
+  height: 20px;
+  display: block
+}
+
+
+
 
 .icon-btn {
   position: relative;
@@ -294,7 +346,7 @@ body {
 }
 
 .courses .deco-wave {
-  position: absolute;
+  position: fixed;
   margin: 0;
   left: calc((100vw - min(1600px, 100%)) / 2 - 150px);
   bottom: 0px;
@@ -316,13 +368,6 @@ body {
   letter-spacing: normal
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 365px);
-  gap: 46px;
-  align-items: stretch;
-  justify-content: center
-}
 
 .card {
   width: 365px;
@@ -351,7 +396,7 @@ body {
 .ck-card {
   display: flex;
   flex-direction: column;
-  width: 365px;
+  min-width: 365px;
   height: 465px;
   border-radius: 20px;
   background: #fff;
@@ -849,43 +894,36 @@ body {
   }
 }
 
-/* Correções de layout e habilitação do carrossel */
-
-/* Oculta a antiga regra de grid e a substitui pela nova estrutura */
 .cards {
   display: block;
-  /* Remove o grid estático */
   gap: 0;
-  /* Remove o gap estático */
 }
+
+
+
 
 .cards-container {
   overflow: hidden;
-  /* Oculta slides que não estão visíveis */
   position: relative;
   width: 100%;
-  /* Replicando o layout centralizador que a div.cards anterior tinha */
   max-width: 776px;
-  /* 365px + 20px gap + 365px + ~26px do 'ver todos'*/
   margin: 0 auto;
 }
 
 .slides-wrapper {
   display: flex;
-  /* Coloca os slides lado a lado */
   transition: transform 0.5s ease-in-out;
-  /* Animação de transição */
 }
 
 .slide {
   display: flex;
   flex-shrink: 0;
-  /* Impede que os slides encolham */
   width: 100%;
-  /* Cada slide ocupa a largura total do container */
   gap: 20px;
   align-items: stretch;
   justify-content: flex-start;
+  margin-left: 20px;
+
 }
 
 .slide .ck-card {
@@ -907,33 +945,24 @@ body {
   margin-left: 20px;
   flex-shrink: 0;
   align-self: flex-start;
-
-
   right: auto;
   top: auto;
 }
 
 
-/* Estilização do Botão de Destaque 'VER TODOS' (Compacto e Horizontal) */
 .btn-see-all {
-  /* Dimensões do Botão */
   width: 250px;
   height: 120px;
   padding: 20px;
-
-  /* Estilização visual */
   background: linear-gradient(135deg, #7D66D9 0%, #3C315B 100%);
   border: none;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(60, 49, 91, 0.4);
 
-  /* Conteúdo e Layout - ALTERADO AQUI */
   display: flex;
   flex-direction: row;
-  /* MUDANÇA: Alinhamento horizontal */
   align-items: center;
   justify-content: center;
-  /* Centraliza horizontalmente */
   text-decoration: none;
   cursor: pointer;
   text-align: center;
@@ -956,10 +985,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 100px;
   gap: 12px;
   text-decoration: none;
   color: #342A66;
   font-weight: 700;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  transform: scale(1);
 }
 
 .btn-see-all img {
@@ -1100,7 +1132,7 @@ body {
   transform: translateY(-50%);
   width: 8px;
   height: 12px;
-  background: url('down2.png') no-repeat center/25px
+  background: url('down2.png') no-repeat center /25px
 }
 
 .chip-ghost {
@@ -1108,6 +1140,17 @@ body {
   font-weight: 400
 }
 
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
 
 @media (max-width:1060px) {
   .cards {
@@ -1119,26 +1162,91 @@ body {
 }
 
 @media (max-width:760px) {
+
+  .sidebar-overlay.active {
+        display: block;
+    }
+
+   .sidebar {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    .sidebar:not(.sidebar-hidden) {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+  
+
+  .icon-btn {
+    display: none;
+  }
+
   .content {
-    margin-left: 220px;
-    flex: 1;
-    min-width: 0
-  }
-
-  .sidebar {
-    position: static;
+    margin-left: 0;
     width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border)
   }
 
-  .cards {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 0.8fr;
-    gap: 46px;
-    align-items: stretch
+  .courses {
+    margin: auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slides-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .slide .ck-card {
+    width: 100%;
+    max-width: 365px;
+    margin-bottom: 20px;
+  }
+
+  .btn-see-all {
+    width: 100%;
+    max-width: 365px;
+    margin-left: 0;
+  }
+
+.top-left {
+  border: 1px solid var(--ck-meta-label);
+  padding: 10px;
+  border-radius: 45%;
+  display: flex;
+  position: absolute;
+  left: 29px;
+  top: 29px;
+  display: flex;
+  align-items: center;
+  gap: 17px
+}
+
+
 }
 
 
@@ -1158,9 +1266,9 @@ body {
 
 .ck-card:hover {
   transform: scale(1.05);
-
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+  z-index: 1000;
+  overflow: visible;
 }
 
 
@@ -1171,13 +1279,51 @@ body {
   margin: 16px 0 40px
 }
 
+@media (max-width:1500px) {
+  .cards-container {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    max-width: 776px;
+    margin: 0 auto;
+  }
+
+
+  .slide {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+
+  .slides-wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel {
+    display: none;
+  }
+
+
+
+}
+
+
+
 @media (max-width:1080px) {
+
+
+
   .catalog .journey-cards {
     grid-template-columns: repeat(2, 1fr)
   }
 }
 
 @media (max-width:640px) {
+
   .catalog .journey-cards {
     grid-template-columns: 1fr
   }

@@ -1,16 +1,18 @@
-  <!DOCTYPE html>
-  <html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <title>Focus Learn</title>
     <link rel="icon" type="image/png" href="../favicon.png" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
     <style>
       /* ==========================================================================
         1. TOKENS DE DESIGN (VARIÁVEIS GLOBAIS)
@@ -100,7 +102,8 @@
         padding: var(--spacing-lg);
         width: 100%;
         max-width: 1024px;
-        overflow: hidden;
+        /* permitir que elementos absolutos dentro do card "escapem" e sejam exibidos */
+        overflow: visible;
         position: relative;
       }
 
@@ -291,30 +294,28 @@
         opacity: 1;
       }
 
-      /* [MELHORIA] Dropdown de Matérias */
       #materia-select {
         position: absolute;
         top: calc(100% + 2px);
         left: 0;
         width: 100%;
-        z-index: 10;
+        z-index: 1;
         border: 2px solid var(--color-border-focus);
         border-top: none;
         border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
         background: var(--color-background);
         box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
-        
-        max-height: 0; /* JS controla a animação */
+        display: none;
         opacity: 0;
         overflow-y: auto;
-        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         padding: 0;
       }
-      
+
       #materia-select.visible {
-        max-height: 200px;
+        display: block;
         opacity: 1;
         padding: var(--spacing-sm);
+        max-height: 300px;
       }
       
       /* [MELHORIA] Estilo das Opções */
@@ -325,6 +326,7 @@
         padding: 0.75rem var(--spacing-md);
         border-radius: var(--border-radius-sm);
         cursor: pointer;
+        z-index: 10;
       }
       
       #materia-select option:hover {
@@ -395,11 +397,11 @@
     </style>
   </head>
   <body>
-    
+
     <main class="main-container">
-      
+
       <section class="login-card">
-        
+
         <header class="signup-header">
           <h1 class="login-card__title">Complete sua conta de Professor</h1>
           <span class="signup-header__step">3 de 3 passos</span>
@@ -410,26 +412,26 @@
         </div>
 
         <form class="form" id="professor-form-final">
-          
+
           <div class="form__group">
-            <label for="apelido" class="form__label">Por qual nomes os alunos te chamam?</label>
-            <input 
-              type="text" 
-              id="apelido" 
-              name="escola" 
-              class="form__input form__input--custom-style" 
-              placeholder="Digite o seu apelido"
-            >
+            <label for="apelido" class="form__label">Por qual nomes os alunos te
+              chamam?</label>
+            <input
+              type="text"
+              id="apelido"
+              name="escola"
+              class="form__input form__input--custom-style"
+              placeholder="Digite o seu apelido">
           </div>
 
           <div class="form__group">
             <label class="form__label">Materias Ensinadas</label>
-            
+
             <div class="tags-wrapper">
-              
+
               <div class="tags-container" tabindex="0">
-                </div>
-              
+              </div>
+
               <select id="materia-select" multiple>
                 <option value="matematica">Matemática</option>
                 <option value="educacao-financeira">Educação Financeira</option>
@@ -444,18 +446,20 @@
               </select>
             </div>
           </div>
-          
+
           <div class="form__actions">
-            <a href="cadastroProfessor.html" class="form__link-back">Voltar</a> 
+            <a href="cadastroProfessor.html" class="form__link-back">Voltar</a>
             <button class="btn btn--primary btn--responsive-action">
-            <a href="../index.html" style="color: inherit; text-decoration: none;">Complete o cadastro</a>
+              <a href="../index.html"
+                style="color: inherit; text-decoration: none;">Complete o
+                cadastro</a>
             </button>
           </div>
-          
+
         </form>
       </section>
     </main>
-    
+
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const progressBar = document.querySelector('.signup-progress__bar');
@@ -515,10 +519,11 @@
           tagsContainer.classList.remove('is-open');
         }
       });
+
+
+      
     </script>
 
   </body>
 
-  </html>
-
-
+</html>

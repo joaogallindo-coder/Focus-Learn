@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const slidesWrapper = document.querySelector('.slides-wrapper');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
@@ -20,50 +20,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    nextButton.addEventListener('click', function() {
+    nextButton.addEventListener('click', function () {
         if (currentSlide < totalSlides - 1) {
             currentSlide++;
         } else {
-            currentSlide = 0; 
+            currentSlide = 0;
         }
         updateCarousel();
     });
 
-    prevButton.addEventListener('click', function() {
+    prevButton.addEventListener('click', function () {
         if (currentSlide > 0) {
             currentSlide--;
         } else {
-            currentSlide = totalSlides - 1; 
+            currentSlide = totalSlides - 1;
         }
         updateCarousel();
     });
 
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
+        dot.addEventListener('click', function () {
             currentSlide = index;
             updateCarousel();
         });
     });
 
-    updateCarousel(); 
+    updateCarousel();
 
     const destinationURL = 'paginaEmBuild.html';
     const courseCards = document.querySelectorAll('.ck-card');
 
     courseCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             window.location.href = destinationURL;
         });
     });
 
     const verTodosLink = document.querySelector('.card.see-all');
     if (verTodosLink) {
-        verTodosLink.addEventListener('click', function(event) { 
+        verTodosLink.addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = 'cursos.html';
         });
     }
+
+    function checkScreenSize() {
+        if (window.innerWidth <= 1500) {
+            currentSlide = 0;
+            updateCarousel();
+        }
+
+
+
+
+
+    }
+
+    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener('load', checkScreenSize);
+
+    
+
+
 });
+
+
+
+
+
+
+
+
 
 
 
