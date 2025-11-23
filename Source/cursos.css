@@ -52,7 +52,7 @@ body {
   pointer-events: none;
 }
 
-.dynamic-sidebar.sidebar-hidden ~ .content {
+.dynamic-sidebar.sidebar-hidden~.content {
   margin-left: 0;
 }
 
@@ -179,17 +179,17 @@ body {
     opacity: 0;
     pointer-events: none;
   }
-  
+
   .dynamic-sidebar:not(.sidebar-hidden) {
     transform: translateX(0);
     opacity: 1;
     pointer-events: all;
   }
-  
+
   .top-left {
     display: flex !important;
   }
-  
+
   .content {
     margin-left: 0 !important;
   }
@@ -202,14 +202,14 @@ body {
     opacity: 1 !important;
     pointer-events: all !important;
   }
-  
+
   .dynamic-sidebar.sidebar-hidden {
     /* No desktop, ignora a classe hidden */
     transform: translateX(0) !important;
     opacity: 1 !important;
     pointer-events: all !important;
   }
-  
+
   .top-left {
     display: none !important;
   }
@@ -414,17 +414,7 @@ body {
   letter-spacing: normal
 }
 
-.card {
-  width: 365px;
-  height: 465px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(30, 22, 84, .06);
-  padding: 14px;
-  display: flex;
-  flex-direction: column
-}
+
 
 /* ESTRUTURA BASICA CARDS */
 :root {
@@ -441,13 +431,16 @@ body {
 .ck-card {
   display: flex;
   flex-direction: column;
-  min-width: 365px;
   height: 465px;
   border-radius: 20px;
   background: #fff;
   border: 1px solid #E5E1F1;
   box-shadow: 0 6px 18px rgba(30, 22, 84, .06);
-  overflow: hidden
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  transform: scale(1);
+  width: 347px
 }
 
 .ck-card__thumb {
@@ -457,6 +450,7 @@ body {
 }
 
 .ck-card__thumb img {
+  height: 174px;
   display: block;
   width: 100%;
   height: auto
@@ -507,6 +501,7 @@ body {
   color: transparent;
   font-weight: 700
 }
+
 
 .ck-chip--new {
   background: #F1FF52;
@@ -706,6 +701,7 @@ body {
   display: flex;
   gap: 24px;
   align-items: center;
+  justify-content: center;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -877,119 +873,76 @@ body {
   gap: 18px
 }
 
-.journey-cards .ck-card {
-  width: 347px
-}
 
 .cards {
   display: block;
   gap: 0;
 }
 
-.cards-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 776px;
-  margin: 0 auto;
-}
 
-.slides-wrapper {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
 
 .slide {
   display: flex;
   flex-shrink: 0;
-  width: 100%;
   gap: 20px;
   align-items: stretch;
   justify-content: flex-start;
   margin-left: 20px;
+
 }
 
-.slide .ck-card {
-  flex-basis: calc(50% - 10px);
-  max-width: calc(50% - 10px);
-}
+
 
 .cards-container {
   display: flex;
   width: auto;
-  margin: 0 auto;
-  max-width: 1120px;
-}
-
-.cards-container>.btn-see-all {
+  overflow: hidden;
   position: relative;
-  margin-left: 20px;
-  flex-shrink: 0;
-  align-self: flex-start;
-  right: auto;
-  top: auto;
 }
 
-.btn-see-all {
-  width: 250px;
-  height: 120px;
-  padding: 20px;
-  background: linear-gradient(135deg, #7D66D9 0%, #3C315B 100%);
-  border: none;
+
+
+.see-all {
+  width: 347px;
+  height: 465px;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(60, 49, 91, 0.4);
+  box-shadow: 0 6px 18px rgba(30, 22, 84, .06);
+  padding: 14px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 15px;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  gap: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-see-all span {
-  color: #FDFCFE;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.card.see-all {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px;
-  gap: 12px;
   text-decoration: none;
   color: #342A66;
   font-weight: 700;
+  display: flex;
+  min-width: 347px;
+  margin-left: 20px;
+
+  cursor: pointer;
   transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   transform: scale(1);
+
 }
 
-.btn-see-all img {
-  filter: brightness(0) invert(1);
-  width: 24px;
-  height: 24px;
-  margin-top: 0;
+.see-all:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+
 }
 
-.btn-see-all:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(60, 49, 91, 0.6);
-}
 
-.cards-container {
-  display: flex;
-  width: auto;
-  margin: 0 auto;
-  max-width: 1120px;
-}
+
 
 .slides-wrapper {
-  max-width: 750px;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  max-width: 900px;
+  margin: 20px 0px;
 }
 
 /* CURSOS */
@@ -1001,25 +954,32 @@ body {
 }
 
 .catalog-wrap {
-  width: 1074px;
-  margin: 0 auto
+  max-width: 1074px;
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .catalog-search {
-  position: relative;
-  height: 72px
+  justify-content: space-between;
+  display: flex;
+  padding: 9px;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 20px;
+  border: 2px solid #9E9E9E;
 }
 
 .catalog-search input[type="search"] {
   width: 100%;
   height: 72px;
-  border: 2px solid #9E9E9E;
-  border-radius: 26px;
   background: #F5F2FF;
   color: #2D2658;
   font-size: 15px;
   padding: 0 76px 0 24px;
-  outline: none
+  outline: none;
+  border: none;
 }
 
 .catalog-search input::placeholder {
@@ -1027,13 +987,7 @@ body {
 }
 
 .catalog-search .search-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
+  align-self: center;
   border: 0px;
   background: transparent;
   display: inline-flex;
@@ -1043,8 +997,6 @@ body {
 }
 
 .catalog-search .search-btn img {
-  width: 28px;
-  height: 28px;
   display: block
 }
 
@@ -1096,21 +1048,9 @@ body {
   font-weight: 400
 }
 
-.ck-card {
-  cursor: pointer;
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-  transform: scale(1);
-}
-
-.ck-card .ck-card__thumb img {
-  transition: none;
-  transform: scale(1);
-}
-
 .ck-card:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
   overflow: visible;
 }
 
@@ -1123,6 +1063,9 @@ body {
   .journey-stats {
     flex-direction: column;
   }
+
+
+
 }
 
 @media (max-width:1500px) {
@@ -1131,7 +1074,7 @@ body {
   }
 
   .cards-container {
-    display: block;
+    flex-direction: column;
     overflow: hidden;
     position: relative;
     max-width: 776px;
@@ -1155,7 +1098,14 @@ body {
   .carousel {
     display: none;
   }
+
+  .see-all {
+    margin-left: 0px;
+  }
 }
+
+
+
 
 @media (max-width:1060px) {
   .cards {
@@ -1169,13 +1119,14 @@ body {
     grid-template-columns: repeat(1, auto);
   }
 
-  .journey-card{
+  .journey-card {
     flex-direction: column;
+    margin: auto;
   }
 }
 
 @media (max-width:760px) {
-  .journey-menu{
+  .journey-menu {
     justify-content: center;
   }
 
@@ -1222,17 +1173,8 @@ body {
     margin-left: 0;
   }
 
-  .slide .ck-card {
-    width: 100%;
-    max-width: 365px;
-    margin-bottom: 20px;
-  }
 
-  .btn-see-all {
-    width: 100%;
-    max-width: 365px;
-    margin-left: 0;
-  }
+
 
   .top-left {
     border: 1px solid var(--ck-meta-label);
@@ -1253,14 +1195,28 @@ body {
     max-width: none;
   }
 
-  .ck-card {
-    padding: 40px;
-  }
-
   .ck-card__tags {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
+    gap: var(--ck-tags-gap);
+    margin: 12px var(--ck-gutter-x)
   }
+
+
+  .see-all {
+    min-width: 300px;
+    width: 300px
+  }
+
+  .journey-menu {
+    flex-direction: column;
+  }
+
+  .ck-card {
+    width: 300px;
+    height: fit-content;
+  }
+
+
+
 }

@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Verifica se o menu já existe para evitar duplicação
+    
     if (document.querySelector('.dynamic-sidebar')) return;
     
-    // Cria a estrutura do menu
+    
     const sidebar = document.createElement('aside');
     sidebar.className = 'dynamic-sidebar sidebar';
     sidebar.innerHTML = `
@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
     
-    // Insere o menu no início do body
+    
     document.body.insertBefore(sidebar, document.body.firstChild);
     
-    // Remove o menu original se existir
+    
     const originalSidebar = document.querySelector('.sidebar:not(.dynamic-sidebar)');
     if (originalSidebar) {
         originalSidebar.remove();
     }
     
-    // Inicializa o controle do menu APENAS para mobile
+    
     initializeMenuControl();
 });
 
@@ -76,19 +76,19 @@ function initializeMenuControl() {
     
     if (!menuBtn || !sidebar) return;
     
-    // Configura estado inicial - NO MOBILE inicia oculto
+    
     function setInitialState() {
         if (window.innerWidth <= 760) {
             sidebar.classList.add('sidebar-hidden');
         }
-        // No desktop não faz nada - menu fica visível por padrão
+        
     }
     
-    // Event listener para o botão do menu (só funciona no mobile)
+    
     menuBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         
-        // Só funciona no mobile
+        
         if (window.innerWidth <= 760) {
             sidebar.classList.toggle('sidebar-hidden');
             
@@ -97,7 +97,7 @@ function initializeMenuControl() {
         }
     });
     
-    // Fechar sidebar ao clicar no overlay (apenas mobile)
+    
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 760) {
             const overlay = document.querySelector('.sidebar-overlay');
@@ -108,16 +108,16 @@ function initializeMenuControl() {
         }
     });
     
-    // Ajustes no redimensionamento
+    
     window.addEventListener('resize', function() {
         const overlay = document.querySelector('.sidebar-overlay');
         
         if (window.innerWidth > 760) {
-            // Desktop: remove overlay e garante menu visível
+            
             if (overlay) overlay.classList.remove('active');
             sidebar.classList.remove('sidebar-hidden');
         } else {
-            // Mobile: garante que sidebar está escondida
+            
             sidebar.classList.add('sidebar-hidden');
         }
     });
@@ -129,6 +129,6 @@ function initializeMenuControl() {
         return overlay;
     }
     
-    // Define estado inicial
+    
     setInitialState();
 }
