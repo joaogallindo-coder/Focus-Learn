@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="dynamic-ico ico"><img src="../images/minhajornada.png" alt="" /></span>
                 <span class="dynamic-label label">Minha Jornada</span>
             </a>
-            <a class="dynamic-item item active" href="cursos.html">
+            <a class="dynamic-item item" href="cursos.html">
                 <span class="dynamic-ico ico"><img src="../images/cursos.png" alt="" /></span>
                 <span class="dynamic-label label">Cursos</span>
             </a>
@@ -67,8 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     
+    setActiveMenuItem();
     initializeMenuControl();
 });
+
+
+function setActiveMenuItem() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const menuItems = document.querySelectorAll('.dynamic-item');
+    
+    menuItems.forEach(item => {
+        
+        item.classList.remove('active');
+        
+       
+        const itemHref = item.getAttribute('href');
+        if (itemHref && itemHref === currentPage) {
+            item.classList.add('active');
+        }
+    });
+}
 
 function initializeMenuControl() {
     const menuBtn = document.querySelector('.menu-btn');
@@ -81,7 +99,6 @@ function initializeMenuControl() {
         if (window.innerWidth <= 760) {
             sidebar.classList.add('sidebar-hidden');
         }
-        
     }
     
     
