@@ -40,7 +40,7 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - Caiane Santos - [Github](https://github.com/caianesantos)
 
-- Daniele Nunes Reis - [Github](https://github.com/caianesantos)
+- Daniele Nunes Reis - [Github](https://github.com/daninuunes)
 
 - Daniel Campos Santos - [Github](https://github.com/DanielCamposSantos)  
 
