@@ -38,7 +38,11 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - Allan Gonçalves de Souza - [LinkedIn](https://www.linkedin.com/in/allan-gsouza/)
 
-- Daniele Nunes Reis - [Github](https://github.com/daninuunes)  
+- Caiane Santos - [Github](https://github.com/daninuunes)
+
+- Daniele Nunes Reis - [Github](https://github.com/caianesantos)
+
+- Daniel Campos Santos - [Github](https://github.com/DanielCamposSantos)  
 
 - Fernanda Baborsa Fires Melo - [GitHub](https://github.com/fairesf)
 
@@ -47,7 +51,9 @@ Este projeto foi desenvolvido com a colaboração de:
 - João Gabriel Galindo - [LinkedIn](https://www.linkedin.com/in/joao-gabriel-galindo/)
 
 - Pedro Henrique de Amorim Lassance - [LinkedIn](https://www.linkedin.com/in/pedro-lassance-50a497338/)
-
+  
+- Daniel Campos Santos - [Github](https://github.com/DanielCamposSantos)  
+ 
 
 
 <br>
