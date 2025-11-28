@@ -38,7 +38,7 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - Allan Gonçalves de Souza - [LinkedIn](https://www.linkedin.com/in/allan-gsouza/)
 
-- Caiane Santos - [Github](https://github.com/daninuunes)
+- Caiane Santos - [Github](https://github.com/caianesantos)
 
 - Daniele Nunes Reis - [Github](https://github.com/caianesantos)
 
