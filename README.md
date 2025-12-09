@@ -52,7 +52,7 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - Pedro Henrique de Amorim Lassance - [LinkedIn](https://www.linkedin.com/in/pedro-lassance-50a497338/)
   
-- Daniel Campos Santos - [Github](https://github.com/DanielCamposSantos)  
+ 
  
 
 
