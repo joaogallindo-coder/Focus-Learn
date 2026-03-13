@@ -50,7 +50,7 @@ Este projeto foi desenvolvido com a colaboração de:
 
 - João Gabriel Galindo - [LinkedIn](https://www.linkedin.com/in/joao-gabriel-galindo/)
 
-- Pedro Henrique de Amorim Lassance - [LinkedIn](https://www.linkedin.com/in/pedro-lassance-50a497338/)
+- Pedro Henrique de Amorim Lassance - [LinkedIn](https://joaogallindo-dev.github.io/Focus-Learn/)
   
  
  
